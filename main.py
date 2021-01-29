@@ -49,12 +49,12 @@ async def feedback_message(message: types.Message):
         else:
             if message.forward_from == None:
                 await bot.forward_message(FEEDBACK_USER_ID, message.chat.id, message.message_id)
-                await bot.send_message(message.chat.id, "Очікуй відповіді")
+                await bot.send_message(message.chat.id, "Очікуй відповіді", parse_mode='HTML')
             else:
                 await message.answer("Переслані повідомлення не побачать по ту сторону боту")
     
     except Exception as e:
-        await message.answer(message.chat.id,f"{str(e)}")
+        await message.answer(message.chat.id, f"{str(e)}")
 
 if __name__ == '__main__':
     executor.start_polling(dp)
